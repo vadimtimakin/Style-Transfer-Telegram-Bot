@@ -1,4 +1,5 @@
 import logging
+import gc
 
 from aiogram import Bot, Dispatcher, executor, types
 
@@ -44,6 +45,7 @@ def transform(content_root, style_root, im_size):
     del style_v
     del output
     torch.cuda.empty_cache()
+    gc.collect()
 
 
 @dp.message_handler(commands=['test'])
@@ -63,11 +65,12 @@ async def help_message(message: types.Message):
                               " with the content (if you suddenly want to "
                               "change it, use the /cancel command and then "
                               "send a new image), and then send me the image"
-                              " that you want to transfer the style from."
-                              " After that, I will send you a picture with"
-                              " the transferred style. When the server is"
-                              " heavily loaded, this can take up to 30 seconds,"
-                              " but it usually only takes 5-10 seconds.")
+                              " that you want to transfer the style from "
+                              "(you can use the /cancel command here as well). "
+                              "Next you will need to select the image "
+                              "resolution. After that, I will send you "
+                              "a picture with the transferred style. "
+                              "This takes a little time.")
 
 
 @dp.message_handler(content_types=['photo'])
@@ -123,8 +126,8 @@ async def photo_processing(message: types.Message):
 async def creator(message: types.Message):
     """Displays information about the bot's Creator."""
     link = 'https://github.com/t0efL/Style-Transfer-Telegram-Bot'
-    await message.answer(text=f'I have been created by toefL.\
-                              \nMy code is here: {link}')
+    await message.answer(text=("I have been created by toefL."
+                              "\nMy code is here:", link))
 
 
 @dp.message_handler(commands=['continue'])
