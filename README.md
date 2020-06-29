@@ -25,7 +25,7 @@ You can install it by the following command:
 
 `$ pip install -U aiogram`
 
-The main advantage of this framework over others is asynchrony. This allows processing requests from multiple users simultaneously. This framework supports webhooks as well as others, but I use regular polling instead, because I chose [AWS](https://aws.amazon.com/?nc1=h_ls) as the platform for deploying the bot, which allows the bot to work without falling asleep.
+The main advantage of this framework over others is asynchrony. This allows processing requests from multiple users simultaneously. This framework supports webhooks as well as others, but I use regular polling instead, because I chose [AWS](https://aws.amazon.com/?nc1=h_ls) as the platform for deployment the bot, which allows the bot to work without falling asleep.
 
 The entire code of the bot itself is located in the module [main.py](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/main.py).
 
@@ -48,7 +48,42 @@ Thanks to BotFather's capabilities, I was able to create a more comfortable envi
 
 Deploy
 ------
-Heroku and AWS are most often used as the main platforms for deploying the bot. Less often - Google Cloud Platform and Pythonanywhere.
+
+### Services
+Heroku and AWS are most often used as the main platforms for deployment the bot. Less often - Google Cloud Platform and Pythonanywhere.
+
+In the end, I chose AWS. This is due to the fact that AWS allocates the most RAM. Other services, including heroku, allocate much less RAM to the user. But this is not the only difference. On heroku, the bot eventually falls asleep, this is fixed by webhooks, but it makes it harder to work. Also, there is no direct access to the GPU on heroku, but we are not particularly interested in this, since I still only put the CPU part of PyTorch (still in order to save memory). If you write simple bots, then you should probably pay attention to heroku, it is much easier to use, there are many tutorials on it on the Internet. But to deploy bots with built-in ML/DL models, you need services like AWS that give you more RAM.
+
+You should understand that now we are talking about free features of various services. If you are willing to pay for the deployment of your bot, then the situation will be different.
+
+### Custom setup
+[Here](https://github.com/hse-aml/natural-language-processing/blob/master/AWS-tutorial.md) is a pretty good tutorial for AWS.
+
+I did everything according to it until second half. Except that instead of a server based on Ubuntu 16.04, I used a server based on Ubuntu 20.04 . In fact, this is an important point, if you do not do the same, then nothing will work for you.
+
+I connected to the server using PuTTY. I downloaded the files via WinSCP. [Here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) are instructions for both of these items.
+
+
+Then through the PuTTY console I installed PIP using these following commands(At the same time updating the package list):
+
+`$ sudo apt update`
+
+`$ sudo apt install python3-pip`
+
+Next I ran the following code to install all the necessary packages(All information about packages and their versions is contained in the file [requirements.txt](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/requirements.txt)):
+
+`$ pip3 install -r requirements.txt`
+
+After that i created Swap Space. [Here](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/) are the instructions.
+
+As a result, I launched the bot with the following command:
+
+`$ python3 main.py`
+
+To make your bot work even when you close the console, write screen to the console before running this command (use Ctrl+C if you have already started it), and then use Ctrl+A+D.
+
+### Additional files
+This repository also contains files [runtime.txt](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/runtime.txt) and [Procfile](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/Procfile). They will be useful if you still want to try to upload the bot to heroku. After watching a couple of tutorials on this topic, you will understand why they are needed.
 
 Results
 -------
