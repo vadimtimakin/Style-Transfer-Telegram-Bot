@@ -80,7 +80,7 @@ As a result, I launched the bot with the following command:
 
 `$ python3 main.py`
 
-To make your bot work even when you close the console, write screen to the console before running this command (use Ctrl+C if you have already started it), and then use Ctrl+A+D.
+To make your bot work even when you close the console, write `screen` to the console before running this command (use Ctrl+C if you have already started it), and then use Ctrl+A+D.
 
 ### Additional files
 This repository also contains files [runtime.txt](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/runtime.txt) and [Procfile](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/Procfile). They will be useful if you still want to try to upload the bot to heroku. After watching a couple of tutorials on this topic, you will understand why they are needed.
