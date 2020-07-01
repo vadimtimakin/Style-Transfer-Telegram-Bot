@@ -59,7 +59,7 @@ You should understand that now we are talking about free features of various ser
 ### Custom setup
 [Here](https://github.com/hse-aml/natural-language-processing/blob/master/AWS-tutorial.md) is a pretty good tutorial for AWS.
 
-I did everything according to it until second half. Except that instead of a server based on Ubuntu 16.04, I used a server based on Ubuntu 20.04 . In fact, this is an important point, if you do not do the same, then nothing will work for you.
+I did everything according to it until "Connect to your instance using SSH. If you have problems connecting to the instance, try following this troubleshooting guide." point. Except that instead of a server based on Ubuntu 16.04, I used a server based on Ubuntu 20.04 . In fact, this is an important point, if you do not do the same, then nothing will work for you.
 
 I connected to the server using PuTTY. I downloaded the files via WinSCP. [Here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) are instructions for both of these items.
 
@@ -81,6 +81,18 @@ As a result, I launched the bot with the following command:
 `$ python3 main.py`
 
 To make your bot work even when you close the console, write `screen` to the console before running this command (use Ctrl+C if you have already started it), and then use Ctrl+A+D.
+
+### How do I check logs?
+What to do if, after closing the console, you want to view the program logs or restart/terminate the program? To do this, you had to write `screen` to the console in advance and use Ctrl+A+D (as I said above). Now it's time to use the following command:
+
+`$ screen -list`
+
+You will see a list of saved screens. See which one has the detached status, and copy the ID of this screen, which consists of several digits (usually 4 or 5) located at the beginning. To access it, use the following command by inserting the number you just copied:
+
+`$ screen -r <THAT NUMBER>`
+
+After that, you will see your previous session in the console where the program was running. If during this time, the program has managed to issue warnings or errors, you will see this and will be able to restart or terminate the program.
+
 
 ### Additional files
 This repository also contains files [runtime.txt](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/runtime.txt) and [Procfile](https://github.com/t0efL/Style-Transfer-Telegram-Bot/blob/master/Procfile). They will be useful if you still want to try to upload the bot to heroku. After watching a couple of tutorials on this topic, you will understand why they are needed.
