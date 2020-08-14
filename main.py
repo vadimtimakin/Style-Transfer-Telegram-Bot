@@ -126,8 +126,9 @@ async def photo_processing(message: types.Message):
 async def creator(message: types.Message):
     """Displays information about the bot's Creator."""
     link = 'https://github.com/t0efL/Style-Transfer-Telegram-Bot'
-    await message.answer(text=("I have been created by toefL."
-                              "\nMy code is here:", link))
+    await message.answer(text="I have been created by toefL." 
+                              "\nMy code is here: " + link)
+
 
 
 @dp.message_handler(commands=['continue'])
