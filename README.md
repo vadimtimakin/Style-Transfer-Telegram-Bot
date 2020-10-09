@@ -36,13 +36,7 @@ Setup and manual
 I set up the bot via `@BotFather`, and there I got a unique token for my bot.
 Thanks to BotFather's capabilities, I was able to create a more comfortable environment for working with the bot. Here's what it looks like:
 
-![alt text](https://i.paste.pics/9FNRL.png?trs=b3c34831295e8536e18a14e9781531fc90ffaddafe24b85c5d67a98a23b69e3c)
-
-![alt text](https://i.paste.pics/9FNR3.png?trs=b3c34831295e8536e18a14e9781531fc90ffaddafe24b85c5d67a98a23b69e3c)
-
 ![alt text](https://i.paste.pics/9FNQ5.png)
-
-![alt text](https://i.paste.pics/9FNQR.png?trs=b3c34831295e8536e18a14e9781531fc90ffaddafe24b85c5d67a98a23b69e3c)
 
 **Before running my code, make sure that you get your own token from BotFather and specify it in the file main.py.**
 
